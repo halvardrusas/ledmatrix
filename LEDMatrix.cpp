@@ -1,9 +1,3 @@
-/*
-   LEDMatrix.cpp
-
-    Created on: 26. des. 2017
-        Author: per-olavr
-*/
 #include "LEDMatrix.h"
 #include <FastLED.h>
 #include "asciifont.h"
