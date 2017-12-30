@@ -1,3 +1,7 @@
+/*
+Members of class LEDMatrix
+*/
+
 #include "LEDMatrix.h"
 #include <FastLED.h>
 #include "asciifont.h"
