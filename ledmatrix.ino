@@ -1,3 +1,8 @@
+/*
+ * 
+ * Author: per-olav & halvardrusas
+ */
+
 #include <FastLED.h>
 #include "LEDMatrix.h"
 
@@ -20,6 +25,7 @@ void setup() {
    //ledMatrixP->drawRectangleRGB(29,3,3,2,0,20,0);
    //ledMatrixP->drawRectangleRGB(29,6,3,2,0,0,20);
 }
+
 
 void loop() {
   ledMatrixP->updateText();
