@@ -18,6 +18,7 @@ class LEDMatrix {
     int hue;
     int sat;
     int val;
+    bool scroll = false;
   public:
     LEDMatrix(const int sizeX, const int sizeY, CRGB* leds);
     void setAllLedsHSV(const uint8_t hue, const uint8_t saturation,
@@ -27,6 +28,8 @@ class LEDMatrix {
     void showCharacterHSV(unsigned char c, float x_pos, int hue, int sat, int val);
     void showTextHSV(char* str, float x_pos, int hue, int sat, int val);
     void updateText();
+    void setScroll(bool scrollOn);
+    void LEDMatrix::drawRectangleRGB(int x0, int y0, int width, int height, int R, int G, int B);
 };
 
 #endif

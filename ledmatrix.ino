@@ -15,10 +15,14 @@ void setup() {
   Serial.println("Start");
   FastLED.clear();
   FastLED.show();
-  ledMatrixP->showTextHSV("12:34", 0, 100, 250, 255);
+  ledMatrixP->showTextHSV("12:34", 0, 0, 250, 50);
+   //ledMatrixP->drawRectangleRGB(29,0,3,2,20,0,0);
+   //ledMatrixP->drawRectangleRGB(29,3,3,2,0,20,0);
+   //ledMatrixP->drawRectangleRGB(29,6,3,2,0,0,20);
 }
 
 void loop() {
- ledMatrixP->updateText();
+  ledMatrixP->updateText();
+ 
   FastLED.show();
 }

@@ -17,7 +17,6 @@ LEDMatrix::LEDMatrix(const int sX, const int sY, CRGB* ledArray) {
 void LEDMatrix::setAllLedsHSV(const uint8_t hue, const uint8_t saturation,
                               const uint8_t intensity) {
   for (int i = 0; i < sizeX * sizeY; i++) {
-    Serial.print("*");
     leds[i] = CHSV(hue, saturation, intensity);
   }
   FastLED.show();
@@ -26,7 +25,6 @@ void LEDMatrix::setAllLedsHSV(const uint8_t hue, const uint8_t saturation,
 void LEDMatrix::setAllLedsRGB(const uint8_t red, const uint8_t green,
                               const uint8_t blue) {
   for (int i = 0; i < sizeX * sizeY; i++) {
-    Serial.print("*");
     leds[i] = CRGB(red, green, blue);
   }
   FastLED.show();
@@ -58,11 +56,8 @@ void LEDMatrix::showCharacterHSV(unsigned char c, float x_pos, int hue, int sat,
       if (px >= 0 && px < (sizeX * sizeY)) {
         leds[px].setHSV(hue, sat, isOn * val);
       }
-      
-
       p = p << 1;
     }
-
   }
 }
 
@@ -78,7 +73,7 @@ void LEDMatrix::showTextHSV(char* str, float x_pos, int hue, int sat, int val) {
 
 void LEDMatrix::updateText() {
   int len = strlen(text);
-  if (len * 5 + startX_pos <= sizeX) {
+  if (!scroll) {
     for (int i = 0; i < len; i++) {
       showCharacterHSV(text[i], startX_pos + i * 6, hue, sat, val);
     }
@@ -88,6 +83,18 @@ void LEDMatrix::updateText() {
     unsigned long t = millis();
     for (int i = 0; i < len; i++) {
       showCharacterHSV(text[i], startX_pos - (t - timeWhenCalled) * 0.01 + i * 6, hue, sat, val);
+    }
+  }
+}
+
+void LEDMatrix::setScroll(bool scrollOn) {
+  scroll = scrollOn;
+}
+
+void LEDMatrix::drawRectangleRGB(int x0, int y0, int width, int height, int R, int G, int B){
+  for (int i = 0; i<width;i++){
+    for (int j = 0; j<height; j++){
+      leds[pixel(x0+i,y0+j)] = CRGB(R, G, B);
     }
   }
 }
